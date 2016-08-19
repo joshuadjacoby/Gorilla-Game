@@ -13,7 +13,7 @@ public class Spawn_Stuff : MonoBehaviour
 
     void spawn_item()
     {
-        int[] pos = new int[] { -2, 0, 2 };
+        float[] pos = new float[] { -2, 0, 2 };
         spawn_position = new Vector3(pos[Random.Range(0, 3)], 2.6f, 0);
         if (Random.value > 0.7)
         {
