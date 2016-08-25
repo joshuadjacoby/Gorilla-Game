@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Set_Objects : MonoBehaviour {
+public class SetObjects : MonoBehaviour {
     Vector3 screen;
 
     GameObject grass;

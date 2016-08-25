@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Spawn_Stuff : MonoBehaviour
+public class SpawnStuff : MonoBehaviour
 {
 
     public GameObject banana;
