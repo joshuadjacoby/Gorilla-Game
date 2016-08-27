@@ -8,28 +8,31 @@ public class Movement : MonoBehaviour
     private bool moveLeft;
     private bool moveRight;
 
-    Vector2 forwardSpeed = new Vector2(5, 0);
+	Vector2 forwardSpeed;
 
     GameObject player;
-
+	
     Vector3 screen;
 
     void Start()
     {
+		forwardSpeed = new Vector2(5, 0);
+
         player = GameObject.Find("Harambe");
+
         screen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
     }
 
     void Update()
     {
-        if (moveLeft && !moveRight)
+		if ((moveLeft && !moveRight) || Input.acceleration.x < 0)
         {
             if (!(player.transform.position.x < -screen.x * .74))
                 player.GetComponent<Rigidbody2D>().velocity = -forwardSpeed;
             else
                 StopMeLeft();
         }
-        if (moveRight && !moveLeft)
+		if ((moveRight && !moveLeft) || Input.acceleration.x > 0)
         {
             if (!(player.transform.position.x > screen.x * .74))
                 player.GetComponent<Rigidbody2D>().velocity = forwardSpeed;

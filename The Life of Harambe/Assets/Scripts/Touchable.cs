@@ -2,8 +2,9 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+#if UNITY_EDITOR
 using UnityEditor;
-
+#endif
 public class Touchable : Text
 {
     protected override void Awake()
@@ -14,7 +15,7 @@ public class Touchable : Text
  
  // Touchable_Editor component, to prevent treating the component as a Text object.
  
- 
+#if UNITY_EDITOR
  [CustomEditor(typeof(Touchable))]
 public class Touchable_Editor : Editor
 {
@@ -23,3 +24,4 @@ public class Touchable_Editor : Editor
         // Do nothing
     }
 }
+#endif

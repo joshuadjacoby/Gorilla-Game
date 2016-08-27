@@ -21,7 +21,7 @@ public class Collisions : MonoBehaviour {
         if (col.gameObject.tag == "Player" && gameObject.tag =="Enemy")
         {
             Destroy(col.gameObject);
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("Start");
         }
 
         if (col.gameObject.tag == "Player" && gameObject.tag == "Collectable")
