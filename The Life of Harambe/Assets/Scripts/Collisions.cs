@@ -28,7 +28,8 @@ public class Collisions : MonoBehaviour {
         if (col.gameObject.tag == "Player" && gameObject.tag == "Collectable")
         {
             Destroy(gameObject);
-            ScoreManager.score += 1;
+            ScoreHandler.score += 1;
+            SpawnStuff.counter++;
         }
     }
 }

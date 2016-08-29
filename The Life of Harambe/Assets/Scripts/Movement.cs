@@ -25,14 +25,15 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        if ((moveLeft && !moveRight) || Input.acceleration.x < 0)
+        getDirection();
+        if (moveLeft && !moveRight)
         {
             if (!(player.transform.position.x < -screen.x * .74))
                 player.GetComponent<Rigidbody2D>().velocity = -forwardSpeed;
             else
                 StopMeLeft();
         }
-		if ((moveRight && !moveLeft) || Input.acceleration.x > 0)
+		if (moveRight && !moveLeft)
         {
             if (!(player.transform.position.x > screen.x * .74))
                 player.GetComponent<Rigidbody2D>().velocity = forwardSpeed;
@@ -40,24 +41,39 @@ public class Movement : MonoBehaviour
                 StopMeRight();
         }
     }
+    
+    //Determines the players x direction
+    void getDirection()
+    {
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.acceleration.x < 0)
+            MoveMeLeft();
+        else
+            StopMeLeft();
+        if (Input.GetKey(KeyCode.RightArrow) || Input.acceleration.x > 0)
+            MoveMeRight();
+        else
+            StopMeRight();
+        if(Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+    }
 
-    public void MoveMeLeft()
+    void MoveMeLeft()
     {
         moveLeft = true;
     }
 
-    public void StopMeLeft()
+    void StopMeLeft()
     {
         moveLeft = false;
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
-    public void MoveMeRight()
+    void MoveMeRight()
     {
         moveRight = true;
     }
 
-    public void StopMeRight()
+    void StopMeRight()
     {
         moveRight = false;
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;

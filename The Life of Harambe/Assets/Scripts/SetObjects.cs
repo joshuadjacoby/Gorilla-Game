@@ -50,7 +50,7 @@ public class SetObjects : MonoBehaviour {
         rock.transform.localScale = new Vector2(screen.x * .0182f, screen.y * .012f);
 
         tree = GameObject.Find("Tree");
-        tree.transform.position = new Vector2(screen.x * -.333f, screen.y * -.472f);
+        tree.transform.position = new Vector2(screen.x * -.348f, screen.y * -.472f);
         tree.transform.localScale = new Vector2(screen.x * .121f, screen.y * .08f);
 
         bush = GameObject.Find("Bush");

@@ -16,7 +16,7 @@ public class ButtonManager : MonoBehaviour {
 
         play = Resources.Load<Sprite>("Play");
         pause = Resources.Load<Sprite>("Pause");
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -26,6 +26,7 @@ public class ButtonManager : MonoBehaviour {
 
     public void startGame () 
     {
+        ScoreHandler.score = 0;
         SceneManager.LoadScene("Main");
     }
 
@@ -46,5 +47,6 @@ public class ButtonManager : MonoBehaviour {
     public void newGame ()
     {
         SceneManager.LoadScene("Start");
+        Destroy(GameObject.Find("ScoreUpdater"));
     }
 }
