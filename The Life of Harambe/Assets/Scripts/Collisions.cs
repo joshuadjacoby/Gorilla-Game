@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 
+//handles collision detection between Game Objects
 public class Collisions : MonoBehaviour {
     // Use this for initialization
     void Start ()
@@ -21,7 +22,7 @@ public class Collisions : MonoBehaviour {
         if (col.gameObject.tag == "Player" && gameObject.tag =="Enemy")
         {
             Destroy(col.gameObject);
-            SceneManager.LoadScene("Start");
+            SceneManager.LoadScene("Game Over");
         }
 
         if (col.gameObject.tag == "Player" && gameObject.tag == "Collectable")

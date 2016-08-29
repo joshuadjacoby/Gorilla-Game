@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//sets the size of all Game Objects to be relative to screen size
 public class SetObjects : MonoBehaviour {
     Vector3 screen;
 
@@ -28,7 +29,7 @@ public class SetObjects : MonoBehaviour {
         fence.transform.position = new Vector2(0, screen.y * .8f);
         fence.transform.localScale = new Vector2(screen.x * .358f, screen.y * .0382f);
 
-        player = GameObject.Find("Harambe");
+        player = GameObject.Find("Gorilla");
         player.transform.position = new Vector2(0, screen.y * -.784f);
         player.transform.localScale = new Vector2(screen.x * .091f, screen.y * .06f);
 

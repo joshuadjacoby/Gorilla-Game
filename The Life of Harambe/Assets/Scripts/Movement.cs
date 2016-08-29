@@ -18,14 +18,14 @@ public class Movement : MonoBehaviour
     {
 		forwardSpeed = new Vector2(5, 0);
 
-        player = GameObject.Find("Harambe");
+        player = GameObject.Find("Gorilla");
 
         screen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
     }
 
     void Update()
     {
-		if ((moveLeft && !moveRight) || Input.acceleration.x < 0)
+        if ((moveLeft && !moveRight) || Input.acceleration.x < 0)
         {
             if (!(player.transform.position.x < -screen.x * .74))
                 player.GetComponent<Rigidbody2D>().velocity = -forwardSpeed;
