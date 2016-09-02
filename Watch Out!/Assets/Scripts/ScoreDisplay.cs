@@ -18,7 +18,8 @@ public class ScoreDisplay : MonoBehaviour {
 
         if (SceneManager.GetActiveScene().name == "Game Over")
         {
-            text.text = "YOU GOT " + ScoreHandler.score + " BANANA" + ((ScoreHandler.score != 1) ? "S" : "");
+            PlayerPrefs.SetInt("High Score", Mathf.Max(ScoreHandler.score, PlayerPrefs.GetInt("High Score")));
+            text.text = "YOU GOT " + ScoreHandler.score + " BANANA" + ((ScoreHandler.score != 1) ? "S" : "") + "!\nBEST: " + PlayerPrefs.GetInt("High Score");
             ScoreHandler.score = 0;
         }
     }

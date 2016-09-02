@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class Movement : MonoBehaviour
 {
 
-    private bool moveLeft;
-    private bool moveRight;
+    bool moveLeft;
+    bool moveRight;
 
-	Vector2 forwardSpeed;
+    Vector2 forwardSpeed;
 
     GameObject player;
 	
@@ -23,39 +23,45 @@ public class Movement : MonoBehaviour
         screen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        if (Input.acceleration.x < 0 && !(player.transform.position.x < -screen.x * .74))
+            player.transform.Translate(Mathf.Max(Input.acceleration.x, -.15f), 0, 0);
+        else if (Input.acceleration.x > 0 && !(player.transform.position.x > screen.x * .74))
+            player.transform.Translate(Mathf.Min(Input.acceleration.x, .15f), 0, 0);
+        else
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
         getDirection();
+
         if (moveLeft && !moveRight)
         {
             if (!(player.transform.position.x < -screen.x * .74))
-                player.transform.Translate(Mathf.Max(Input.acceleration.x, -.15f), 0, 0);
-            //player.GetComponent<Rigidbody2D>().velocity = -forwardSpeed;
+                player.GetComponent<Rigidbody2D>().velocity = -forwardSpeed;
             else
                 StopMeLeft();
         }
-		if (moveRight && !moveLeft)
+        if (moveRight && !moveLeft)
         {
             if (!(player.transform.position.x > screen.x * .74))
-                player.transform.Translate(Mathf.Min(Input.acceleration.x, .15f), 0, 0);
-            //player.GetComponent<Rigidbody2D>().velocity = forwardSpeed;
+                player.GetComponent<Rigidbody2D>().velocity = forwardSpeed;
             else
                 StopMeRight();
         }
     }
-    
+
     //Determines the players x direction
     void getDirection()
     {
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.acceleration.x < 0)
+        if (Input.GetKey(KeyCode.LeftArrow))
             MoveMeLeft();
         else
             StopMeLeft();
-        if (Input.GetKey(KeyCode.RightArrow) || Input.acceleration.x > 0)
+        if (Input.GetKey(KeyCode.RightArrow))
             MoveMeRight();
         else
             StopMeRight();
-        if(Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
             player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 

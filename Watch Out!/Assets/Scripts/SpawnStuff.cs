@@ -55,21 +55,21 @@ public class SpawnStuff : MonoBehaviour
             spawn_item();
             timer = 0.0;
         }
-        Debug.Log(spawn_freq);
     }
 
     void spawn_item()
     {
         spawn_position = pos[Random.Range(0, 4)];
 
-        if (counter == 5)
+        if (counter == 1)
         {
             counter = 0;
-            if (spawn_time >= 1)
-                spawn_time -= .1;
-            if (spawn_freq >= .6)
-                spawn_freq -= .02;
+            if (spawn_time >= .6)
+                spawn_time -= .2;
+            if (spawn_freq >= .45)
+                spawn_freq -= .05;
         }
+
         if (Random.value > spawn_freq)
         {
             temp_spawn_kid = Instantiate(kids[Random.Range(0, 5)], spawn_position, Quaternion.identity) as GameObject;

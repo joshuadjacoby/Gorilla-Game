@@ -22,6 +22,7 @@ public class Collisions : MonoBehaviour {
         if (col.gameObject.tag == "Player" && gameObject.tag =="Enemy")
         {
             Destroy(col.gameObject);
+            Destroy(gameObject);
             SceneManager.LoadScene("Game Over");
         }
 
