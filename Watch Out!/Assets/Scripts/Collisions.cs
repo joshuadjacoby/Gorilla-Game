@@ -28,6 +28,7 @@ public class Collisions : MonoBehaviour {
 
         if (col.gameObject.tag == "Player" && gameObject.tag == "Collectable")
         {
+            AudioSource.PlayClipAtPoint(gameObject.GetComponent<AudioSource>().clip, gameObject.transform.position);
             Destroy(gameObject);
             ScoreHandler.score += 1;
             SpawnStuff.counter++;

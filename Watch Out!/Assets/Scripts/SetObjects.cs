@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 //sets the size of all Game Objects to be relative to screen size
@@ -14,6 +15,7 @@ public class SetObjects : MonoBehaviour {
     GameObject rock;
     GameObject tree;
     GameObject bush;
+    GameObject ranger;
 
 
 	// Use this for initialization
@@ -29,9 +31,22 @@ public class SetObjects : MonoBehaviour {
         fence.transform.position = new Vector2(0, screen.y * .8f);
         fence.transform.localScale = new Vector2(screen.x * .358f, screen.y * .0382f);
 
-        player = GameObject.Find("Gorilla");
-        player.transform.position = new Vector2(0, screen.y * -.784f);
-        player.transform.localScale = new Vector2(screen.x * .091f, screen.y * .06f);
+        if (SceneManager.GetActiveScene().name != "Game Over")
+        {
+            player = GameObject.Find("Gorilla");
+            player.transform.position = new Vector2(0, screen.y * -.784f);
+            player.transform.localScale = new Vector2(screen.x * .091f, screen.y * .06f);
+        }
+        //else
+        //{
+        //    player = GameObject.Find("Gorilla");
+        //    player.transform.position = new Vector2(screen.x * -.636f, screen.y * -.528f);
+        //    player.transform.localScale = new Vector2(screen.x * .091f, screen.y * .06f);
+
+        //    ranger = GameObject.Find("Ranger");
+        //    ranger.transform.position = new Vector2(screen.x * .533f, screen.y * -.552f);
+        //    ranger.transform.localScale = new Vector2(screen.x * .1227f, screen.y * .081f);
+        //}
 
         wall = GameObject.Find("Brick Wall");
         wall.transform.position = new Vector2(0, 0);
