@@ -36,7 +36,7 @@ public class SpawnStuff : MonoBehaviour
         };
 
         counter = 0;
-        spawn_time = 2.1;
+        spawn_time = 2;
         spawn_freq = .8;
 
         screen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
