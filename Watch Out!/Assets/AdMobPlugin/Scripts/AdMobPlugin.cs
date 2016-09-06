@@ -24,8 +24,12 @@ using System.Collections;
 
 public class AdMobPlugin : MonoBehaviour{
 
-	public string				publisherId			= "ca-app-pub-6953416706201125/4875264890";
-	public bool					isTesting			= true;
+#if UNITY_ANDROID
+    string				        publisherId			= "ca-app-pub-3902298493650266/4176030236";
+#elif UNITY_IPHONE
+    string                      publisherId         = "ca-app-pub-3902298493650266/2468637830";
+#endif
+    public bool					isTesting			= true;
 	public string[]				testDeviceIds		= {"TEST_DEVICE_ID"};
 	public bool					guessSelfDeviceId	= true;
 	public AdSize				size				= AdSize.BANNER;
