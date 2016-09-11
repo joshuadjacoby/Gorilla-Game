@@ -46,5 +46,6 @@ public class ButtonManager : MonoBehaviour {
     public void newGame ()
     {
         SceneManager.LoadScene("Main");
+        GameObject.Find("AdMobHandler").GetComponent<AdMob>().bannerHide();
     }
 }

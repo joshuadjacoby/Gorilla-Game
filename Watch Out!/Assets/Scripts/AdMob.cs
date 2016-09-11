@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using GoogleMobileAds.Api;
 
@@ -7,16 +8,23 @@ public class AdMob : MonoBehaviour {
 	InterstitialAd interstitial;
 
 	// Use this for initialization
-	void Start () {
-		RequestBanner ();
+	void Awake () {
+        RequestBanner();
+        bannerView.Hide();
+        DontDestroyOnLoad(gameObject);
 	}
 	
+    void Start ()
+    {
+
+    }
+
 	// Update is called once per frame
 	void Update () {
 	
 	}
 
-	private void RequestBanner()
+	private void RequestBanner ()
 	{
 		#if UNITY_ANDROID
 		string adUnitId = "ca-app-pub-3902298493650266/4176030236";
@@ -34,7 +42,7 @@ public class AdMob : MonoBehaviour {
 		bannerView.LoadAd(request);
 	}
 
-	private void RequestInterstitial()
+	private void RequestInterstitial ()
 	{
 		#if UNITY_ANDROID
 		string adUnitId = "INSERT_ANDROID_INTERSTITIAL_AD_UNIT_ID_HERE";
@@ -52,9 +60,14 @@ public class AdMob : MonoBehaviour {
 		interstitial.LoadAd(request);
 	}
 
-	void OnDestroy ()
-	{
-		bannerView.Destroy ();
-		interstitial.Destroy ();
-	}
+    public void bannerHide ()
+    {
+        bannerView.Hide();
+        bannerView.LoadAd(new AdRequest.Builder().Build());
+    }
+
+    public void bannerShow()
+    {
+        bannerView.Show();
+    }
 }

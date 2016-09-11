@@ -23,6 +23,7 @@ public class Collisions : MonoBehaviour {
         {
             Destroy(col.gameObject);
             Destroy(gameObject);
+            GameObject.Find("AdMobHandler").GetComponent<AdMob>().bannerShow();
             SceneManager.LoadScene("Game Over");
         }
 
