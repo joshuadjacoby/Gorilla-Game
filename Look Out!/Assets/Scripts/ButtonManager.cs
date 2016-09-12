@@ -13,14 +13,17 @@ public class ButtonManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        pauseButton = GameObject.Find("Pause Button");
-        pauseText = GameObject.Find("Pause Text");
-        pauseText.SetActive(false);
-        quitButton = GameObject.Find("Quit Button");
-        quitButton.SetActive(false);
+        if (SceneManager.GetActiveScene().name == "Main")
+        {
+            pauseButton = GameObject.Find("Pause Button");
+            pauseText = GameObject.Find("Pause Text");
+            pauseText.SetActive(false);
+            quitButton = GameObject.Find("Quit Button");
+            quitButton.SetActive(false);
 
-        play = Resources.Load<Sprite>("Play");
-        pause = Resources.Load<Sprite>("Pause");
+            play = Resources.Load<Sprite>("Play");
+            pause = Resources.Load<Sprite>("Pause");
+        }
     }
 	
 	// Update is called once per frame
