@@ -16,9 +16,8 @@ public class SetObjects : MonoBehaviour {
     GameObject bush;
     GameObject ranger;
 
-
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         screen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
 

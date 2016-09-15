@@ -10,6 +10,16 @@ public class ButtonManager : MonoBehaviour {
     Sprite play;
     Sprite pause;
 
+    bool gamePaused;
+    void Awake ()
+    {
+        //disables screen timeout
+        if (SceneManager.GetActiveScene().name == "Main")
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        else
+            Screen.sleepTimeout = SleepTimeout.SystemSetting;
+    }
+
 	// Use this for initialization
 	void Start ()
     {
@@ -29,12 +39,19 @@ public class ButtonManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-	
+        if (Input.GetKey(KeyCode.Menu))
+            pauseGame();
+        if (Input.GetKey(KeyCode.Escape) && gamePaused)
+            pauseGame();
 	}
 
     public void startGame () 
     {
         ScoreHandler.score = 0;
+        if (!PlayerPrefs.HasKey("Name"))
+        {
+
+        }
         SceneManager.LoadScene("Main");
     }
 
@@ -46,6 +63,8 @@ public class ButtonManager : MonoBehaviour {
             pauseButton.GetComponent<Image>().sprite = pause;
             pauseText.SetActive(false);
             quitButton.SetActive(false);
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
+            gamePaused = false;
         }
         else
         {
@@ -53,6 +72,8 @@ public class ButtonManager : MonoBehaviour {
             pauseButton.GetComponent<Image>().sprite = play;
             pauseText.SetActive(true);
             quitButton.SetActive(true);
+            Screen.sleepTimeout = SleepTimeout.SystemSetting;
+            gamePaused = true;
         }
 	}
 
@@ -66,5 +87,11 @@ public class ButtonManager : MonoBehaviour {
     {
         SceneManager.LoadScene("Main");
         GameObject.Find("AdMobHandler").GetComponent<AdMob>().bannerHide();
+    }
+    
+    void OnApplicationPause (bool pauseStatus)
+    {
+        if (pauseStatus && !gamePaused)
+            pauseGame();
     }
 }
