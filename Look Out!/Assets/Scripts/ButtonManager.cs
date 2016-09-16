@@ -14,6 +14,10 @@ public class ButtonManager : MonoBehaviour {
 
     void Awake ()
     {
+        //if (SceneManager.GetActiveScene().name == "Start" && !PlayerPrefs.HasKey("Name"))
+        //{
+
+        //}
         //disables screen timeout
         if (SceneManager.GetActiveScene().name == "Main")
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -40,19 +44,18 @@ public class ButtonManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKey(KeyCode.Menu))
-            pauseGame();
-        if (Input.GetKey(KeyCode.Escape) && gamePaused)
-            pauseGame();
+        if (SceneManager.GetActiveScene().name == "Main")
+        {
+            if (Input.GetKey(KeyCode.Menu))
+                pauseGame();
+            if (Input.GetKey(KeyCode.Escape) && gamePaused)
+                pauseGame();
+        }
 	}
 
     public void startGame () 
     {
         ScoreHandler.score = 0;
-        if (!PlayerPrefs.HasKey("Name"))
-        {
-
-        }
         SceneManager.LoadScene("Main");
     }
 
