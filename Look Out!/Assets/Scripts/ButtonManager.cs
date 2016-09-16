@@ -11,6 +11,7 @@ public class ButtonManager : MonoBehaviour {
     Sprite pause;
 
     bool gamePaused;
+
     void Awake ()
     {
         //disables screen timeout
@@ -57,7 +58,7 @@ public class ButtonManager : MonoBehaviour {
 
 	public void pauseGame () 
 	{
-        if (Time.timeScale == 0)
+        if (gamePaused)
         {
             Time.timeScale = 1;
             pauseButton.GetComponent<Image>().sprite = pause;
