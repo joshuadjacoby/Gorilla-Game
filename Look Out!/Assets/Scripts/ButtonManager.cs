@@ -44,13 +44,7 @@ public class ButtonManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (SceneManager.GetActiveScene().name == "Main")
-        {
-            if (Input.GetKey(KeyCode.Menu))
-                pauseGame();
-            if (Input.GetKey(KeyCode.Escape) && gamePaused)
-                pauseGame();
-        }
+
 	}
 
     public void startGame () 
