@@ -14,6 +14,10 @@ public class ButtonManager : MonoBehaviour {
 
     void Awake ()
     {
+        //if (SceneManager.GetActiveScene().name == "Start" && !PlayerPrefs.HasKey("Name"))
+        //{
+
+        //}
         //disables screen timeout
         if (SceneManager.GetActiveScene().name == "Main")
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -49,10 +53,6 @@ public class ButtonManager : MonoBehaviour {
     public void startGame () 
     {
         ScoreHandler.score = 0;
-        if (!PlayerPrefs.HasKey("Name"))
-        {
-
-        }
         SceneManager.LoadScene("Main");
     }
 

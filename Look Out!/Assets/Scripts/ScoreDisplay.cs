@@ -8,7 +8,7 @@ public class ScoreDisplay : MonoBehaviour {
 
     public static int score;
 
-    dreamloLeaderBoard dl;
+    //dreamloLeaderBoard dl;
 
     // Use this for initialization
     void Start()
@@ -24,8 +24,8 @@ public class ScoreDisplay : MonoBehaviour {
             ScoreHandler.score = 0;
         }
 
-        dl = dreamloLeaderBoard.GetSceneDreamloLeaderboard();
-        dl.AddScore(SystemInfo.deviceName, PlayerPrefs.GetInt("High Score"));
+        //dl = dreamloLeaderBoard.GetSceneDreamloLeaderboard();
+        //dl.AddScore(SystemInfo.deviceName, PlayerPrefs.GetInt("High Score"));
     }
 
     // Update is called once per frame
