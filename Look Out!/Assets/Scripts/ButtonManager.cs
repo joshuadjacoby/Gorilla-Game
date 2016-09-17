@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -22,7 +23,9 @@ public class ButtonManager : MonoBehaviour {
         if (SceneManager.GetActiveScene().name == "Main")
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
         else
-            Screen.sleepTimeout = SleepTimeout.SystemSetting;
+        {
+            StartCoroutine(RevertSleepTime());
+        }
     }
 
 	// Use this for initialization
@@ -91,5 +94,11 @@ public class ButtonManager : MonoBehaviour {
     {
         if (pauseStatus && !gamePaused)
             pauseGame();
+    }
+
+    IEnumerator RevertSleepTime()
+    {
+        yield return new WaitForSeconds(SleepTimeout.SystemSetting);
+        Screen.sleepTimeout = SleepTimeout.SystemSetting;
     }
 }
